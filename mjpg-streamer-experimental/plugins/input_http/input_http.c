@@ -110,7 +110,7 @@ Return Value: 0
 ******************************************************************************/
 int input_run(int id)
 {
-    pglobal->in[id].buf = malloc(256 * 1024);
+    pglobal->in[id].buf = malloc(BUFFER_SIZE);
     if(pglobal->in[id].buf == NULL) {
         fprintf(stderr, "could not allocate memory\n");
         exit(EXIT_FAILURE);

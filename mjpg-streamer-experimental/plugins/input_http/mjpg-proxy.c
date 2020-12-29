@@ -46,7 +46,7 @@
 
 const char * CONTENT_LENGTH = "Content-Length:";
 // TODO: this must be decoupled from mjpeg-streamer
-const char * BOUNDARY =     "--boundarydonotcross";
+const char * BOUNDARY =     "--ipcamera";
 
 void init_extractor_state(struct extractor_state * state) {
     state->length = 0;
@@ -92,6 +92,7 @@ void extract_data(struct extractor_state * state, char * buffer, int length) {
         case CONTENT:
             if (state->length >= BUFFER_SIZE - 1) {
                 perror("Buffer too small\n");
+                exit(1);
                 break;
             }
             state->buffer[state->length++] = buffer[i];
